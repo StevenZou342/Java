@@ -5,3 +5,4 @@ class Main {
 	System.out.println("Line1\nLine2");
   }
 }
+hi
