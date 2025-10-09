@@ -5,10 +5,11 @@ class Main {
 
   void init(){
     // Invoke the functions (test different situations)
-    GPA=3.5;
-    Sat= 1460;
-    MPH= 30;
-    double fine
+    
+    System.out.println(collegeApp(2,1400));
+    System.out.println(ecoFuel(50));
+    System.out.println(speedfine(75));
+    System.out.println(discount(200,300,500));
   }
 
   /*
@@ -47,13 +48,19 @@ class Main {
     Write a function speedFine() that accepts the speed on a speeding ticket and          returns a fine of $75 for speeds between 60 and 70 (inlcusive); otherwise return 
     a fine of $75 plus two dollars for every mile over 70.
   */
-      double speedfine(double speed,double fine){
+      double speedfine(double speed){
             if(speed>=60 && speed<=70){
-              return 75$;
-            }else if(speed>71)
+              return 75;
+            }else if(speed>70){
+              return (speed - 70)*2+75;
+            }
+            else{
+              return 0;
+            }
+          }
 
 
-      }
+      
 
     
   /*
@@ -62,7 +69,13 @@ class Main {
     if at least one of the items costs $100 or more; 
     otherwise return the total amount with no discount.
   */
-
+      double discount(double food,double comp,double paper){
+        if(food > 100 || comp>100 || paper>100){
+          return (food+comp+paper) * .9;
+        }else{
+          return food+comp+paper;
+        }
+      }
 
   
 
