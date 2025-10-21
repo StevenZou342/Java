@@ -10,7 +10,12 @@ class Main {
   void init(){
     // Invoke the functions below
   System.out.println(getUsername("hi@gmail.com"));
+  System.out.println(splitReverse("Happy Days"));
+  System.out.println(splitReverse("For ever"));
 
+  System.out.println(createUsername("Adam","Smith","987654321"));
+  System.out.println(createUsername("Taylor","Swift","123456789"));
+    
     
   }
   /*
@@ -29,7 +34,7 @@ class Main {
     int atIndex = email.indexOf('@');
     return email.substring(0, atIndex);
     }
-  String splitrevese(String word){
+  String splitReverse(String s){
     int middle = s.length()/2;
     return s.substring(middle) + s.substring(0,middle);
   }
