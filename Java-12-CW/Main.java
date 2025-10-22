@@ -3,28 +3,38 @@ class Main {
   public static void main(String[] args) {
     (new Main()).init();
   }
-  void print(Object o){ System.out.println(o);}
-  void printt(Object o){ System.out.print(o);}
 
   void init(){
-   
-
+  // college credit 
+  System.out.println(collegeCredit("MKUFCE1"));
+  System.out.println(collegeCredit("MKUFC1"));
+  // counselor
+  System.out.println(getCounselor("1D0"));
+  System.out.println(getCounselor("D10"));
+  System.out.println(getCounselor("1F0"));
+  System.out.println(getCounselor("1C0"));
+  System.out.println(getCounselor("1G0"));
+  System.out.println(getCounselor("X10"));
+  // image type
+  System.out.println(imageType("firstQuarter.png"));
+  System.out.println(imageType("documentX.pdf"));
+  System.out.println(imageType("pic1.JPEG"));
+  System.out.println(imageType("pic2.jpg"));
+  System.out.println(imageType("ironman.gif"));
     
   }
 /*
 Problem 1:
 Write a function collegeCredit() that accepts a course code and if a course gets college credit return true otherwise return false. If the 6th letter of the course code is "E" or "M" then it is a college credit course.
 */
-boolean collegeCredit(String name){
-  if(name.substring(6,7).equals("E"||"M") ){
-    return true;
-  }else{
-    return false;
+  boolean collegeCredit(String course){
+    if(course.substring(5,6).equals("M") ||
+       course.substring(5,6).equals("E") )
+      return true;
+    else
+      return false;
   }
-  }
-}
-
-
+  
 /*
 Problem 2:
 Write a function getCounselor() that accepts a student's official class code and returns their guidance counselor based on the either the first or the middle character of the official class code being:
@@ -35,21 +45,22 @@ E-Eyzengart
 F-Flores
 G-Gibson
 */
-String getConselour(String code){
-  if(code.substring(0,1)||code.substring(1,2).equals(code.indexOf("B"))){
-    return "Berrouet";
-    }else if(code.substring(0,1)||code.substring(1,2).equals(code.indexOf("C"){
-       return "Chu";
-    }else if(code.substring(0,1)||code.substring(1,2).equals(code.indexOf("D"){
-       return "Dinn";
-   }else if(code.substring(0,1)||code.substring(1,2).equals(code.indexOf("F"){
-    return "Flores";
-    else if(code.substring(0,1)||code.substring(1,2).equals(code.indexOf("E"){
-        reuturn "Eyzengart";
-    }else{
-      return "Gibson";
+  String getCounselor(String ofcl){
+    if(ofcl.substring(0,1).equals("D") || ofcl.substring(1,2).equals("D")){
+      return  "Dinn";
     }
-}
+    else if(ofcl.substring(0,1).equals("F") || ofcl.substring(1,2).equals("F")){
+      return  "Flores";
+    }
+    else if(ofcl.substring(0,1).equals("C") || ofcl.substring(1,2).equals("C")){
+      return  "Chu";
+    }
+    else if(ofcl.substring(0,1).equals("G") || ofcl.substring(1,2).equals("G")){
+      return  "Gibson";
+    }
+    else
+      return "GC unknown";
+  }
 
 /*  
 Problem 3:
@@ -59,8 +70,24 @@ JPEG or JPG - Joint Photographic Experts Group
 PNG - Portable Network Graphics
 GIF - Graphics Interchange Format
 PDF - Portable Document Format(not an image type)
-*/ 
-
- 
+*/  
+  String imageType(String fileName){
+    int pos = fileName.indexOf(".");
+    
+    if (fileName.substring(pos+1).equalsIgnoreCase("JPEG") || fileName.substring(pos+1).equalsIgnoreCase("JPG")){
+        return "Joint Photograpic Experts Group";
+       }
+    else if (fileName.substring(pos+1).equalsIgnoreCase("PNG") ){
+        return "Portable Network Graphics";
+       }
+    else if (fileName.substring(pos+1).equalsIgnoreCase("GIF") ){
+        return "Graphics Interchage Format";
+       }
+    else if (fileName.substring(pos+1).equalsIgnoreCase("PDF") ){
+        return "Portable Document Format(not an image type)";
+       }
+    else 
+      return "Unknow file type";
+  }
   
 }
