@@ -37,23 +37,25 @@ class Main {
 
     // Create the database object
     Database db = new Database("jdbc:sqlite:chinook.db");
-    String sql="";
-     
+
+
     // Problem 1: Create a default route that serves the following message: "You are connected, but route not given or incorrect....";
-    server.createContext("/", new RouteHandler("You are connected, but route not given or incorrect...."));
+    server.createContext("/", new RouteHandler("You are connected, but route not given or incorrect....") );
 
     // Problem 2: Create a route called 'employees' that gets all the employee records.
-    sql+="Select * from chinook.db Where "
-    server.createContext("/employees", new RouteHandler("You are connected, but route not given or incorrect...."));
-
-    // Problem 3: Create a route called 'songs' that gets the track name and the album title of the song.
+    String sql = "";
+    sql  = "Select * from employees";
+    server.createContext("/employees", new RouteHandler(db,sql) );
     
-       
+    // Problem 3: Create a route called 'songs' that gets the track name and the album title of the song.
+    sql  = " SELECT tracks.name, tracks.unitprice, albums.title FROM tracks ";
+    sql += " INNER JOIN albums ON tracks.albumid=albums.albumid ";
+    server.createContext("/songs", new RouteHandler(db,sql) );
+
+
+    
     // Start the server      
     server.start();
     System.out.println("Server is listening on port " + port); 
-    
   }    
 }
-
-
